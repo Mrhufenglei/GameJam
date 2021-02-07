@@ -24,7 +24,6 @@ public abstract class BaseMember : MonoBehaviour, IGameController
         if (m_collider != null)
         {
             m_playerVelocity = new Vector3(montionX * m_memberData.m_speedX, montionY, montionZ * m_memberData.m_speedY);
-            // m_collider.Move(new Vector3(montionX * m_memberData.m_speedX, montionY, montionZ * m_memberData.m_speedY));
         }
     }
 
@@ -75,7 +74,6 @@ public abstract class BaseMember : MonoBehaviour, IGameController
         if (collider.gameObject.layer == 8)
         {
             Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
-            return;
         }
     }
 }
