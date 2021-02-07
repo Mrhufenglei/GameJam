@@ -9,15 +9,13 @@ using UnityEngine;
 /// <summary>
 /// 
 /// </summary>
-public class BaseMember : MonoBehaviour
+public abstract class BaseMember : MonoBehaviour
 {
     public MemberType m_memberType = MemberType.Enemy;
 
-    [Header("Data Setting")]
-    public MemberData m_memberData = new MemberData();
-    
-    [Header("Collider")]
-    public CharacterController m_collider;
+    [Header("Data Setting")] public MemberData m_memberData = new MemberData();
+
+    [Header("Collider")] public CharacterController m_collider;
 
     public void Move(float montionX, float montionY, float montionZ)
     {
@@ -28,13 +26,14 @@ public class BaseMember : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnControllerColliderHit(ControllerColliderHit collider)
     {
-        Debug.Log(collision.gameObject.name);
-    }
-    //When the Primitive collides with the walls, it will reverse direction
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject.name);
+        if (collider.gameObject.layer == 8)
+        {
+            Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
+            return;
+        }
+
+      
     }
 }
