@@ -12,6 +12,8 @@ using UnityEngine;
 /// </summary>
 public class MemberData
 {
+    [Header("Physics Setting")]
+    public float m_gravityValue = -9.81f;
     [Header("Attributes Setting")]
     public float m_hp = 100;
     [Header("Move Speed")]
