@@ -15,12 +15,18 @@ public sealed class ViewModuleManager : MonoBehaviour
     private Dictionary<int, ViewModuleData> m_viewModuleDatas = new Dictionary<int, ViewModuleData>();
 
     [SerializeField] private UIPool m_uiPool;
+    [SerializeField] private Camera m_uiCamera;
 
     [SerializeField] private EventSystemManager m_eventSystemManager;
 
     public UIPool Pool
     {
         get { return m_uiPool; }
+    }
+
+    public Camera UICamera
+    {
+        get { return m_uiCamera; }
     }
 
     public GameObject[] m_layerObjects;
