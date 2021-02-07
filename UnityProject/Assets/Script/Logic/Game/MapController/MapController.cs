@@ -4,6 +4,7 @@
 //
 //----------------------------------------------------------------
 
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -11,7 +12,9 @@ using UnityEngine;
 /// </summary>
 public class MapController : MonoBehaviour, IGameController
 {
-    
+    public BaseMember m_player;
+    public List<BaseMember> m_enemys = new List<BaseMember>(10);
+
     #region IGameController
 
     public void OnInit()
