@@ -123,8 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0acf5224543c18498af6f05fd077a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosionEfx: {fileID: 1865185532811072, guid: 270dc2fdf7d99394f9e815f05b648dfa,
-    type: 3}
+  ExplosionEfx: {fileID: 184608, guid: 9edc33f62cf3ae849badc4cc12fe5f8a, type: 3}
   m_rigidbody: {fileID: 5162146110610590023}
-  ExplosionDelay: 10
+  ExplosionDelay: 6
   m_isGround: 0
