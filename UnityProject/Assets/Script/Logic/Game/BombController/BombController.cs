@@ -47,6 +47,8 @@ public class BombController : MonoBehaviour, IGameController
     public GameObject BombPrefab;
 
     public float DropInterval = 5;
+    public float DropCount = 5;
+
     public float DropY = 10;
 
     public float RandomRangeX = 5;
@@ -58,7 +60,11 @@ public class BombController : MonoBehaviour, IGameController
         mTimer -= Time.deltaTime;
         if(mTimer <= 0)
         {
-            CreateBomb();
+            for (int i = 0; i < DropCount; i++)
+            {
+                CreateBomb();
+            }
+            
             mTimer = DropInterval;
         }
     }
