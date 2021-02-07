@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Assets-_Resources-LocalModel
+  m_EditorClassIdentifier: 
+  m_GroupName: Assets-_Resources-LocalModel
+  m_Data:
+    m_SerializedData: []
+  m_GUID: cc42a694d9ca1b149b0bd30468f72b26
+  m_SerializeEntries:
+  - m_GUID: 1a1939ec0449a5340a1a47fa2fcc0e19
+    m_Address: Assets/_Resources/LocalModel/Levels_table.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: ca690a553304c6242bf006192c578db6
+    m_Address: Assets/_Resources/LocalModel/Language_languagetable.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f62e8784a5b482745a31949952f04e37
+    m_Address: Assets/_Resources/LocalModel/LocalString_LocalString.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cfa4b91c360421644b86ea6605c3edd5, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c3e0d672c9e6e494bbedcdbe2dc8d7cd, type: 2}
+    - {fileID: 11400000, guid: bdb7ef1d40e6ac34b986c6a0c26fefa0, type: 2}

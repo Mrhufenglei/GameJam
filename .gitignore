@@ -1,0 +1,12 @@
+*/*.csproj
+*/*.sln
+*/.idea/
+*/Library/
+*/Temp/
+*/obj/
+*/builds/
+*/ServerData/
+*/Logs/
+*/*/Assets/Plugins/
+*/*/Assets/Plugins.meta
+*/.vs/
