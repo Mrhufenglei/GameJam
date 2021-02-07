@@ -401,6 +401,7 @@ MonoBehaviour:
   m_opController: {fileID: 1308014360}
   m_mapController: {fileID: 1588347861}
   m_cameraController: {fileID: 1905892889}
+  m_state: 0
 --- !u!4 &1558628166
 Transform:
   m_ObjectHideFlags: 0
@@ -458,7 +459,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1588347859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb99e27d18fb40e09f99dcc2e8d01a30, type: 3}
+  m_Script: {fileID: 11500000, guid: f3d2216562f57524984f6b0ef88f9d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1905892887
@@ -501,7 +502,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1905892887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe56a72c3124d698ba475abefc1e624, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dfe5029bdfd1ad4184662e8640b1bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_camera: {fileID: 1242915259}
