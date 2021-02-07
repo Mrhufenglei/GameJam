@@ -12,6 +12,12 @@ public enum LocalMessageName
     /// 关闭loading界面 回调
     /// </summary>
     CC_UI_LOADINGVIEW_CLOSE,
+    
+    /// <summary>
+    /// 游戏开始
+    /// </summary>
+    CC_GAME_Start,
+    
     /// <summary>
     /// 失败 -GameController.FailType
     /// </summary>
