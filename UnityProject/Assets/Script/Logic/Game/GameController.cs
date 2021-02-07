@@ -27,6 +27,11 @@ public partial class GameController : MonoBehaviour, IGameController
         OnInit();
     }
 
+    private void Update()
+    {
+        OnUpdate(Time.deltaTime, Time.unscaledDeltaTime);
+    }
+
     private void OnDestroy()
     {
         OnDeInit();

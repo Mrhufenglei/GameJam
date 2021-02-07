@@ -59,6 +59,7 @@ public class GameStartViewModule : IViewModule
     {
         GameApp.UI.OpenView(ViewName.GameViewModule);
         GameApp.UI.CloseView(ViewName.GameStartViewModule);
+        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_Start,null);
     }
 
     #endregion

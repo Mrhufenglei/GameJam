@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// 
 /// </summary>
-public class OpController : MonoBehaviour,IGameController
+public class OpController : MonoBehaviour, IGameController
 {
     #region IGameController
 
@@ -19,6 +19,11 @@ public class OpController : MonoBehaviour,IGameController
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
     {
+        if (GameController.Builder.m_mapController.m_player == null) return;
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        GameController.Builder.m_mapController.m_player.transform.position += new Vector3(horizontal, vertical);
     }
 
     public void OnDeInit()
