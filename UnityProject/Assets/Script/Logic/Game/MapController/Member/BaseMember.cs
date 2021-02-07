@@ -13,18 +13,28 @@ public class BaseMember : MonoBehaviour
 {
     public MemberType m_memberType = MemberType.Enemy;
 
+    [Header("Data Setting")]
+    public MemberData m_memberData = new MemberData();
+    
     [Header("Collider")]
     public CharacterController m_collider;
 
-    [Header("Move Speed")]
-    public float m_speedX = 10;
-    public float m_speedY = 10;
-
     public void Move(float montionX, float montionY, float montionZ)
     {
+        if (m_memberData == null) return;
         if (m_collider != null)
         {
-            m_collider.Move(new Vector3(montionX * m_speedX, montionY, montionZ * m_speedY));
+            m_collider.Move(new Vector3(montionX * m_memberData.m_speedX, montionY, montionZ * m_memberData.m_speedY));
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
+    //When the Primitive collides with the walls, it will reverse direction
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
     }
 }

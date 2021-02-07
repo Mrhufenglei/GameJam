@@ -23,8 +23,12 @@ public class OpController : MonoBehaviour, IGameController
 
         float horizontal = Input.GetAxis("Horizontal")*deltaTime;
         float vertical = Input.GetAxis("Vertical")*deltaTime;
-        GameController.Builder.m_mapController.m_player.Move(horizontal,0,vertical);
-        // GameController.Builder.m_mapController.m_player.transform.position += new Vector3(horizontal, 0,vertical);
+        SetHorizontalAddVertical(horizontal,vertical);
+    }
+
+    public void SetHorizontalAddVertical(float h, float v)
+    {
+        GameController.Builder.m_mapController.m_player.Move(h,0,v);
     }
 
     public void OnDeInit()
