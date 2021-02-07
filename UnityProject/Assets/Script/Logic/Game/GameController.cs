@@ -15,6 +15,7 @@ public partial class GameController : MonoBehaviour, IGameController
     public OpController m_opController;
     public MapController m_mapController;
     public CameraController m_cameraController;
+    // public CameraController m_bombController;
 
     public static GameController Builder;
 
