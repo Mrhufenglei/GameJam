@@ -36,6 +36,7 @@ public class UIHPNode : MonoBehaviour
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
     {
         UpdatePosition();
+        UpdateSliderValue();
     }
 
     private void SetSliderValue(float value)

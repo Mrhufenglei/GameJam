@@ -113,7 +113,9 @@ public class MapController : MonoBehaviour, IGameController
     {
         List<BaseMember> members = new List<BaseMember>();
         Collider[] hits = new Collider[100];
-        int count = Physics.OverlapSphereNonAlloc(pos, radius, hits, 1 << 16 & 17);
+        int count = Physics.OverlapSphereNonAlloc(pos, radius, hits, 1 << LayerManager.Player | 1 << LayerManager.Enemy,
+            QueryTriggerInteraction.Collide);
+
         if (count == 0) return members;
         for (int i = 0; i < count; i++)
         {
@@ -123,7 +125,40 @@ public class MapController : MonoBehaviour, IGameController
             if (member == null) continue;
             members.Add(member);
         }
+
         return members;
+    }
+
+
+    /// <summary>
+    /// 检查是否游戏可以结束
+    /// </summary>
+    public void CheckIsOverForMembers()
+    {
+        if (m_player != null && m_player.m_memberState == MemberState.Death)
+        {
+            GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_FAIL, null);
+            return;
+        }
+
+        if (m_enemys != null)
+        {
+            int deathCount = 0;
+            for (int i = 0; i < m_enemys.Count; i++)
+            {
+                var member = m_enemys[i];
+                if (member == null) continue;
+                if (member.m_memberState == MemberState.Death)
+                {
+                    deathCount++;
+                }
+            }
+
+            if (deathCount == m_enemys.Count)
+            {
+                GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_WIN, null);
+            }
+        }
     }
 
     #endregion

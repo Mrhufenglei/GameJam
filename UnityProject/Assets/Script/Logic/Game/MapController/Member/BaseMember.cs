@@ -4,6 +4,7 @@
 //
 //----------------------------------------------------------------
 
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -41,6 +42,7 @@ public abstract class BaseMember : MonoBehaviour, IGameController
     public virtual void OnInit()
     {
         ResetAttributes();
+        SwtichState(MemberState.Idle);
     }
 
     public virtual void OnUpdate(float deltaTime, float unscaledDeltaTime)
@@ -66,6 +68,7 @@ public abstract class BaseMember : MonoBehaviour, IGameController
 
     public virtual void OnGameStart()
     {
+        SwtichState(MemberState.Run);
         //创建HpUI
         GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_CREATEHP, this);
     }
@@ -87,7 +90,11 @@ public abstract class BaseMember : MonoBehaviour, IGameController
         m_hp -= attack;
         if (m_hp <= 0)
         {
-//死亡            
+            m_hp = 0;
+            //死亡            
+            SwtichState(MemberState.Death);
+            //检查是否结束
+            GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_CHECKISOVERFORMEMBERS, null);
         }
     }
 
@@ -104,5 +111,20 @@ public abstract class BaseMember : MonoBehaviour, IGameController
         {
             Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
         }
+    }
+
+    public void SwtichState(MemberState state)
+    {
+        switch (state)
+        {
+            case MemberState.Idle:
+                break;
+            case MemberState.Run:
+                break;
+            case MemberState.Death:
+                break;
+        }
+
+        m_memberState = state;
     }
 }

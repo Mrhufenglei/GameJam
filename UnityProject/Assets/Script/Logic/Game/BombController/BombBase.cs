@@ -9,13 +9,17 @@ public class BombBase : MonoBehaviour
 
     public GameObject ExplosionEfx;
     public Rigidbody m_rigidbody;
-    
+
     public float ExplosionDelay = 3f;
 
     public bool m_isGround = false;
     private float mTimer = 0;
 
+    public float m_radius = 2;
+    public float m_attack = 30;
+
     bool isExplosion = false;
+
     void Start()
     {
         mTimer = ExplosionDelay;
@@ -33,18 +37,34 @@ public class BombBase : MonoBehaviour
             var efx = GameObject.Instantiate(ExplosionEfx);
             efx.transform.position = this.transform.position;
             this.gameObject.SetActive(false);
+            ToHit();
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (m_isGround == true) return;
-        if(m_rigidbody==null)return;
+        if (m_rigidbody == null) return;
         if (other.gameObject.layer == 12)
         {
             m_rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
             m_rigidbody.Sleep();
             m_isGround = true;
+        }
+    }
+
+    private void ToHit()
+    {
+        if (GameController.Builder != null &&
+            GameController.Builder.m_mapController != null)
+        {
+            var members = GameController.Builder.m_mapController.FindMembers(transform.position, m_radius);
+            for (int i = 0; i < members.Count; i++)
+            {
+                var member = members[i];
+                if (member == null) continue;
+                member.OnHit(m_attack);
+            }
         }
     }
 }

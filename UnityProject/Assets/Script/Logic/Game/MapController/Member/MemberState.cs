@@ -9,7 +9,16 @@
 /// </summary>
 public enum MemberState
 {
+    /// <summary>
+    /// 等待状态
+    /// </summary>
     Idle,
+    /// <summary>
+    /// 游戏状态
+    /// </summary>
     Run,
+    /// <summary>
+    /// 死亡状态
+    /// </summary>
     Death,
 }

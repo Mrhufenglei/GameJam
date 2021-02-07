@@ -31,6 +31,11 @@ public enum LocalMessageName
     /// 创建Hp   -BaseMember
     /// </summary>
     CC_GAME_CREATEHP,
+    
+    /// <summary>
+    /// 检查是否游戏结束
+    /// </summary>
+    CC_GAME_CHECKISOVERFORMEMBERS,
 }
 
 

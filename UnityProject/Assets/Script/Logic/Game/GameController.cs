@@ -5,6 +5,7 @@
 //----------------------------------------------------------------
 
 using System;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -53,6 +54,7 @@ public partial class GameController : MonoBehaviour, IGameController
         GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_Start, OnEventGameStart);
         GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_WIN, OnEventGameWin);
         GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_FAIL, OnEventGameFail);
+        GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_CHECKISOVERFORMEMBERS, OnEventCheckIsOverForMembers);
     }
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
@@ -68,6 +70,7 @@ public partial class GameController : MonoBehaviour, IGameController
         GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_Start, OnEventGameStart);
         GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_WIN, OnEventGameWin);
         GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_FAIL, OnEventGameFail);
+        GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_CHECKISOVERFORMEMBERS, OnEventCheckIsOverForMembers);
 
         if (m_opController != null) m_opController.OnDeInit();
         if (m_mapController != null) m_mapController.OnDeInit();
@@ -102,6 +105,10 @@ public partial class GameController : MonoBehaviour, IGameController
         if (m_opController != null) m_opController.OnGameOver(gameOverType);
         if (m_mapController != null) m_mapController.OnGameOver(gameOverType);
         if (m_cameraController != null) m_cameraController.OnGameOver(gameOverType);
+        
+        GameApp.UI.CloseView(ViewName.GameViewModule);
+        GameApp.UI.OpenView(ViewName.GameOverViewModule,gameOverType);
+        
         m_state = State.GameOver;
     }
 
@@ -122,6 +129,11 @@ public partial class GameController : MonoBehaviour, IGameController
     private void OnEventGameFail(int type, object eventObject)
     {
         OnGameOver(GameOverType.Failure);
+    }
+
+    private void OnEventCheckIsOverForMembers(int type, object eventObject)
+    {
+        if(m_mapController!=null)m_mapController.CheckIsOverForMembers();
     }
 
     #endregion
