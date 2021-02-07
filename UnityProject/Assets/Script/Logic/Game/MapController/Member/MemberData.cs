@@ -15,7 +15,7 @@ public class MemberData
     [Header("Physics Setting")]
     public float m_gravityValue = -9.81f;
     [Header("Attributes Setting")]
-    public float m_hp = 100;
+    public float m_hpMax = 100;
     [Header("Move Speed")]
     public float m_speedX = 10;
     public float m_speedY = 10;

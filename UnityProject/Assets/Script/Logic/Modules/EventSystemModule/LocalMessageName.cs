@@ -26,4 +26,11 @@ public enum LocalMessageName
     /// 成功
     /// </summary>
     CC_GAME_WIN,
+    
+    /// <summary>
+    /// 创建Hp   -BaseMember
+    /// </summary>
+    CC_GAME_CREATEHP,
 }
+
+

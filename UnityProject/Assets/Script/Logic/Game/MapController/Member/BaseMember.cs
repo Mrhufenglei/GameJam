@@ -12,11 +12,20 @@ using UnityEngine;
 public abstract class BaseMember : MonoBehaviour, IGameController
 {
     public MemberType m_memberType = MemberType.Enemy;
+    public MemberState m_memberState = MemberState.Idle;
 
     [Header("Data Setting")] public MemberData m_memberData = new MemberData();
 
     [Header("Collider")] public CharacterController m_collider;
     [SerializeField] [Label] private Vector3 m_playerVelocity;
+
+    [Header("Attributes")] [SerializeField] [Label]
+    private float m_hp = 0;
+
+    public float HP
+    {
+        get { return m_hp; }
+    }
 
     public void Move(float montionX, float montionY, float montionZ)
     {
@@ -31,6 +40,7 @@ public abstract class BaseMember : MonoBehaviour, IGameController
 
     public virtual void OnInit()
     {
+        ResetAttributes();
     }
 
     public virtual void OnUpdate(float deltaTime, float unscaledDeltaTime)
@@ -56,6 +66,8 @@ public abstract class BaseMember : MonoBehaviour, IGameController
 
     public virtual void OnGameStart()
     {
+        //创建HpUI
+        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_CREATEHP, this);
     }
 
     public virtual void OnPause(bool pause)
@@ -68,6 +80,23 @@ public abstract class BaseMember : MonoBehaviour, IGameController
 
     #endregion
 
+    #region OnHit
+
+    public void OnHit(float attack)
+    {
+        m_hp -= attack;
+        if (m_hp <= 0)
+        {
+//死亡            
+        }
+    }
+
+    #endregion
+
+    private void ResetAttributes()
+    {
+        m_hp = m_memberData.m_hpMax;
+    }
 
     public virtual void OnControllerColliderHit(ControllerColliderHit collider)
     {
