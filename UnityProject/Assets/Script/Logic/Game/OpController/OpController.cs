@@ -21,9 +21,9 @@ public class OpController : MonoBehaviour, IGameController
     {
         if (GameController.Builder.m_mapController.m_player == null) return;
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        SetHorizontalAddVertical(horizontal,vertical);
+        //float horizontal = Input.GetAxis("Horizontal");
+        //float vertical = Input.GetAxis("Vertical");
+        //SetHorizontalAddVertical(horizontal,vertical);
     }
 
     public void SetHorizontalAddVertical(float h, float v)
