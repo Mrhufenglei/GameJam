@@ -126,7 +126,7 @@ public class GameApp : MonoBehaviour
     {
         //多语言
 
-        //DataModuleManager.Instance.RegisterViewModule(new PlayerDataModule());
+        datas.RegisterDataModule(new LanguageDataModule());
 
     }
     /// <summary>
@@ -134,13 +134,19 @@ public class GameApp : MonoBehaviour
     /// </summary>
     private static void RegisterAllViewModules(ViewModuleManager views)
     {
-        //ViewModuleManager.Instance.RegisterViewModule(new ViewModuleData(new LoginViewModule()));
+        views.RegisterViewModule(new ViewModuleData(new LoadingViewModule()));
+        views.RegisterViewModule(new ViewModuleData(new MainViewModule()));
+        views.RegisterViewModule(new ViewModuleData(new GameStartViewModule()));
+        views.RegisterViewModule(new ViewModuleData(new GameViewModule()));
+        views.RegisterViewModule(new ViewModuleData(new GameOverViewModule()));
     }
     /// <summary>
     /// 注册所有状态
     /// </summary>
     private static void RegisterAllStates(StateManager states)
     {
-        //StateManager.Instance.RegisterState(new LoginState());
+        states.RegisterState(new MainState());
+        states.RegisterState(new GameState());
+
     }
 }

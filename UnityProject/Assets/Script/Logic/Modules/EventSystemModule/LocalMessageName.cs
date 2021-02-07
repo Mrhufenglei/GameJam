@@ -9,6 +9,10 @@ public enum LocalMessageName
     /// </summary>
     CC_REFRESH_LANGUAGE,
     /// <summary>
+    /// 关闭loading界面 回调
+    /// </summary>
+    CC_UI_LOADINGVIEW_CLOSE,
+    /// <summary>
     /// 失败 -GameController.FailType
     /// </summary>
     CC_GAME_FAIL,

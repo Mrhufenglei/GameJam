@@ -6,13 +6,23 @@ public class GameLauncher : MonoBehaviour
 {
     [SerializeField]
     private GameApp m_gameApp;
-
+    [Header("Language Setting")]
+    public bool m_isReadyLanguage = false;
+    public LanguageType m_languageType = LanguageType.English;
+    
     void Awake()
     {
         //Application.targetFrameRate = 30;
         GameObject.DontDestroyOnLoad(this.gameObject);
 
         m_gameApp.StarUp();
+        
+        LanguageManager.Instance.CheckLanguage();
+        if (m_isReadyLanguage) GameApp.Event.DispatchNow((int)LocalMessageName.CC_REFRESH_LANGUAGE, m_languageType);
+        //默认loading界面为关闭
+        GameApp.UI.OpenView(ViewName.LoadingViewModule, LoadingViewModule.LoadingType.Opened, UILayers.Second);
+      
+        GameApp.State.ActiveState(StateName.MainState);
 
     }
     private void Update()

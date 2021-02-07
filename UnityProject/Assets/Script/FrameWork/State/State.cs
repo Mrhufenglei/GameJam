@@ -10,6 +10,11 @@
 public abstract class State
 {
     /// <summary>
+    /// 获取状态名称
+    /// </summary>
+    /// <returns></returns>
+    public abstract int GetName();
+    /// <summary>
     /// 进入状态
     /// </summary>
     public abstract void OnEnter();
@@ -23,11 +28,7 @@ public abstract class State
     /// 离开状态
     /// </summary>
     public abstract void OnExit();
-    /// <summary>
-    /// 获取状态名称
-    /// </summary>
-    /// <returns></returns>
-    public abstract int GetName();
+  
     public abstract void RegisterEvents(EventSystemManager manager);
 
     public abstract void UnRegisterEvents(EventSystemManager manager);

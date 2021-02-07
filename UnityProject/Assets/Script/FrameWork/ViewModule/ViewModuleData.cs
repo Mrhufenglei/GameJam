@@ -14,6 +14,7 @@ public class ViewModuleData
     public GameObject m_gameObject;
     public IViewModule m_viewModule;
     public bool m_isOpened = false;
+    public UILayers m_uiLayers = UILayers.First;
     public ViewModuleData(IViewModule viewModule, GameObject gameObject = null)
     {
         m_gameObject = gameObject;

@@ -16,7 +16,7 @@ public class StateManager : MonoBehaviour
     private EventSystemManager m_eventSystemManager;
   
     /// <summary>
-    /// ¼¤»î×´Ì¬
+    /// æ¿€æ´»çŠ¶æ€
     /// </summary>
     /// <param name="stateName"></param>
     public void ActiveState(int stateName)
@@ -34,7 +34,7 @@ public class StateManager : MonoBehaviour
         m_currentState = _state;
     }
     /// <summary>
-    /// »ñµÃ×´Ì¬»ú
+    /// è·å¾—çŠ¶æ€æœº
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="stateName"></param>
@@ -50,7 +50,7 @@ public class StateManager : MonoBehaviour
         return _t;
     }
     /// <summary>
-    /// ×¢²á×´Ì¬
+    /// æ³¨å†ŒçŠ¶æ€
     /// </summary>
     /// <param name="state"></param>
     public void RegisterState(State state)
@@ -61,7 +61,7 @@ public class StateManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// È¡Ïû×¢²á
+    /// å–æ¶ˆæ³¨å†Œ
     /// </summary>
     /// <param name="state"></param>
     public void UnRegisterState(State state)
@@ -72,7 +72,7 @@ public class StateManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// Í¨¹ıÃû×ÖÈ¡Ïû×¢²á
+    /// é€šè¿‡åå­—å–æ¶ˆæ³¨å†Œ
     /// </summary>
     /// <param name="stateName"></param>
     public void UnRegisterStateByName(int stateName)

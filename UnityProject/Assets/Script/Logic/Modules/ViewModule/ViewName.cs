@@ -1,16 +1,24 @@
 ﻿public enum ViewName
 {
     /// <summary>
-    /// 登录界面
+    /// 加载界面
     /// </summary>
-    LoginViewModule,
+    LoadingViewModule,
+    /// <summary>
+    ///主界面界面
+    /// </summary>
+    MainViewModule,
+    /// <summary>
+    ///游戏开始界面
+    /// </summary>
+    GameStartViewModule,
     /// <summary>
     /// 游戏界面
     /// </summary>
     GameViewModule,
     /// <summary>
-    /// 选择界面
+    ///游戏结束界面
     /// </summary>
-    SelectViewModule,
-    LoadingViewModule,
+    GameOverViewModule,
+
 }
