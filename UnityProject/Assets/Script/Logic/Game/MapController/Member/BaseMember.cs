@@ -13,11 +13,13 @@ public class BaseMember : MonoBehaviour
 {
     public MemberType m_memberType = MemberType.Enemy;
 
-    public Rigidbody m_rigidbody;
-    public Collider m_collider;
-    //
-    // public void sddd()
-    // {
-    //     m_rigidbody.velocity = 
-    // }
+    public CharacterController m_collider;
+
+    public float m_speedX = 10;
+    public float m_speedY = 10;
+
+    public void Move(float montionX, float montionY, float montionZ)
+    {
+        if (m_collider != null) m_collider.Move(new Vector3(montionX * m_speedX, montionY, montionZ * m_speedY));
+    }
 }

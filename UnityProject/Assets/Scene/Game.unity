@@ -201,8 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_memberType: 0
-  m_rigidbody: {fileID: 0}
-  m_collider: {fileID: 0}
+  m_collider: {fileID: 108286347}
 --- !u!143 &108286347
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1081,6 +1080,7 @@ Transform:
   - {fileID: 1308014359}
   - {fileID: 1588347860}
   - {fileID: 1905892888}
+  - {fileID: 1899868417}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1130,6 +1130,55 @@ MonoBehaviour:
   m_player: {fileID: 108286346}
   m_enemys:
   - {fileID: 1947648565}
+--- !u!1 &1899868416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899868417}
+  - component: {fileID: 1899868418}
+  m_Layer: 0
+  m_Name: BombController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899868417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899868416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1558628166}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1899868418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899868416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd45c5f88923f8c4584292afdd3e5de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombPrefab: {fileID: 183738871980724886, guid: 77eac0c36d21d1044bce9c0ad2d4730d,
+    type: 3}
+  DropInterval: 5
+  DropY: 10
+  RandomRangeX: 5
+  RandomRangeZ: 5
 --- !u!1 &1905892887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,8 +1269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_memberType: 1
-  m_rigidbody: {fileID: 0}
-  m_collider: {fileID: 0}
+  m_collider: {fileID: 1947648566}
 --- !u!143 &1947648566
 CharacterController:
   m_ObjectHideFlags: 0
