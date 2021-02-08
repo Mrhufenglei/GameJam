@@ -4,6 +4,7 @@
 //
 //----------------------------------------------------------------
 
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -43,6 +44,48 @@ public class MemberPlayer : BaseMember
             }
 
             return;
+        }
+    }
+
+    protected override void OnEnterState(MemberState state)
+    {
+        switch (state)
+        {
+            case MemberState.Show:
+                break;
+            case MemberState.Idle:
+                break;
+            case MemberState.Run:
+                break;
+            case MemberState.Death:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }
+
+    protected override void OnUpdateState(float deltaTime, float unscaledDeltaTime, MemberState state)
+    {
+        switch (state)
+        {
+            case MemberState.Show:
+                break;
+            case MemberState.Idle:
+            case MemberState.Run:
+                var groundedPlayer = m_character.isGrounded;
+                if (groundedPlayer && m_playerVelocity.y < 0)
+                {
+                    m_playerVelocity.y = 0f;
+                }
+
+                m_playerVelocity.y += m_memberData.m_gravityValue;
+                var vaule = m_playerVelocity * deltaTime;
+                m_character.Move(vaule);
+                break;
+            case MemberState.Death:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
 }

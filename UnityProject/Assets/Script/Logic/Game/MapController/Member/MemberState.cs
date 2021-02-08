@@ -10,11 +10,15 @@
 public enum MemberState
 {
     /// <summary>
-    /// 等待状态
+    /// 展示
+    /// </summary>
+    Show,
+    /// <summary>
+    /// 休闲
     /// </summary>
     Idle,
     /// <summary>
-    /// 游戏状态
+    /// 移动
     /// </summary>
     Run,
     /// <summary>

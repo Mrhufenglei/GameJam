@@ -24,6 +24,7 @@ public class BombController : MonoBehaviour, IGameController
     private float mTimer = 0f;
 
     private List<BombBase> m_bombs = new List<BombBase>();
+    private Dictionary<int, BombBase> m_dicBombs = new Dictionary<int, BombBase>();
 
     #region IGameController
 
@@ -78,12 +79,14 @@ public class BombController : MonoBehaviour, IGameController
 
         go.transform.position = new Vector3(rndx, DropY, rndz);
         m_bombs.Add(bombBase);
+        m_dicBombs[go.GetInstanceID()] = bombBase;
     }
 
     public void DestroyBomb(BombBase bombBase)
     {
         if (bombBase == null) return;
         m_bombs.Remove(bombBase);
+        m_dicBombs.Remove(bombBase.gameObject.GetInstanceID());
         GameObject.Destroy(bombBase.gameObject);
     }
 
@@ -97,5 +100,15 @@ public class BombController : MonoBehaviour, IGameController
         }
 
         m_bombs.Clear();
+    }
+
+    /// <summary>
+    /// 获得Bomb
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public BombBase GetBomb(int key)
+    {
+        return m_dicBombs[key];
     }
 }
