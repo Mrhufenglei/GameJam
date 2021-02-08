@@ -4,6 +4,7 @@
 //
 //----------------------------------------------------------------
 
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -11,7 +12,19 @@ using UnityEngine;
 /// </summary>
 public class BombController : MonoBehaviour, IGameController
 {
-    
+    public GameObject BombPrefab;
+
+    public float DropInterval = 5;
+    public float DropCount = 5;
+
+    public float DropY = 10;
+
+    public float RandomRangeX = 5;
+    public float RandomRangeZ = 5;
+    private float mTimer = 0f;
+
+    private List<BombBase> m_bombs = new List<BombBase>();
+
     #region IGameController
 
     public void OnInit()
@@ -20,10 +33,21 @@ public class BombController : MonoBehaviour, IGameController
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
     {
+        mTimer -= Time.deltaTime;
+        if (mTimer <= 0)
+        {
+            for (int i = 0; i < DropCount; i++)
+            {
+                CreateBomb();
+            }
+
+            mTimer = DropInterval;
+        }
     }
 
     public void OnDeInit()
     {
+        DestroyAllBomb();
     }
 
     public void OnReset()
@@ -44,41 +68,34 @@ public class BombController : MonoBehaviour, IGameController
 
     #endregion
 
-    public GameObject BombPrefab;
-
-    public float DropInterval = 5;
-    public float DropCount = 5;
-
-    public float DropY = 10;
-
-    public float RandomRangeX = 5;
-    public float RandomRangeZ = 5;
-    private float mTimer = 0f;
-
-    void Update()
-    {
-        mTimer -= Time.deltaTime;
-        if(mTimer <= 0)
-        {
-            for (int i = 0; i < DropCount; i++)
-            {
-                CreateBomb();
-            }
-            
-            mTimer = DropInterval;
-        }
-    }
-
     private void CreateBomb()
     {
         var go = GameObject.Instantiate(BombPrefab);
-        var rndx = Random.Range(-RandomRangeX,RandomRangeX);
-        var rndz = Random.Range(-RandomRangeZ,RandomRangeZ);
-        Debug.Log("Droppos");
-        
-        Debug.Log(rndx);
-        Debug.Log(rndz);
+        var rndx = Random.Range(-RandomRangeX, RandomRangeX);
+        var rndz = Random.Range(-RandomRangeZ, RandomRangeZ);
+        var bombBase = go.GetComponent<BombBase>();
+        if (bombBase == null) return;
 
         go.transform.position = new Vector3(rndx, DropY, rndz);
+        m_bombs.Add(bombBase);
+    }
+
+    public void DestroyBomb(BombBase bombBase)
+    {
+        if (bombBase == null) return;
+        m_bombs.Remove(bombBase);
+        GameObject.Destroy(bombBase.gameObject);
+    }
+
+    public void DestroyAllBomb()
+    {
+        for (int i = 0; i < m_bombs.Count; i++)
+        {
+            var bomb = m_bombs[i];
+            if (bomb == null) continue;
+            GameObject.Destroy(bomb.gameObject);
+        }
+
+        m_bombs.Clear();
     }
 }

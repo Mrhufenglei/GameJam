@@ -16,6 +16,7 @@ public class MapController : MonoBehaviour, IGameController
     public List<BaseMember> m_enemys = new List<BaseMember>(10);
     public Dictionary<int, BaseMember> m_members = new Dictionary<int, BaseMember>();
 
+    public BombController m_bombController;
     #region IGameController
 
     public void OnInit()
@@ -35,6 +36,7 @@ public class MapController : MonoBehaviour, IGameController
                 enemy.OnInit();
             }
         }
+        if(m_bombController!=null)m_bombController.OnInit();
     }
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
@@ -45,6 +47,8 @@ public class MapController : MonoBehaviour, IGameController
             var enemy = m_enemys[i];
             if (enemy != null) enemy.OnUpdate(deltaTime, unscaledDeltaTime);
         }
+        if(m_bombController!=null)m_bombController.OnUpdate(deltaTime, unscaledDeltaTime);
+
     }
 
     public void OnDeInit()
@@ -57,6 +61,9 @@ public class MapController : MonoBehaviour, IGameController
         }
 
         m_members.Clear();
+        
+        if(m_bombController!=null)m_bombController.OnDeInit();
+
     }
 
     public void OnReset()
@@ -67,6 +74,8 @@ public class MapController : MonoBehaviour, IGameController
             var enemy = m_enemys[i];
             if (enemy != null) enemy.OnReset();
         }
+        if(m_bombController!=null)m_bombController.OnReset();
+
     }
 
     public void OnGameStart()
@@ -77,6 +86,8 @@ public class MapController : MonoBehaviour, IGameController
             var enemy = m_enemys[i];
             if (enemy != null) enemy.OnGameStart();
         }
+        if(m_bombController!=null)m_bombController.OnGameStart();
+
     }
 
     public void OnPause(bool pause)
@@ -87,6 +98,8 @@ public class MapController : MonoBehaviour, IGameController
             var enemy = m_enemys[i];
             if (enemy != null) enemy.OnPause(pause);
         }
+        if(m_bombController!=null)m_bombController.OnPause(pause);
+
     }
 
     public void OnGameOver(GameOverType gameOverType)
@@ -97,6 +110,8 @@ public class MapController : MonoBehaviour, IGameController
             var enemy = m_enemys[i];
             if (enemy != null) enemy.OnGameOver(gameOverType);
         }
+        if(m_bombController!=null)m_bombController.OnGameOver(gameOverType);
+
     }
 
     #endregion
@@ -159,6 +174,36 @@ public class MapController : MonoBehaviour, IGameController
                 GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_WIN, null);
             }
         }
+    }
+
+    #endregion
+
+    #region
+
+    /// <summary>
+    /// 查找成员
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
+    public List<BombBase> FindBombs(Vector3 pos, float radius)
+    {
+        List<BombBase> bombBases = new List<BombBase>();
+        Collider[] hits = new Collider[100];
+        int count = Physics.OverlapSphereNonAlloc(pos, radius, hits, 1 << LayerManager.Bomb,
+            QueryTriggerInteraction.Collide);
+
+        if (count == 0) return bombBases;
+        for (int i = 0; i < count; i++)
+        {
+            var collider = hits[i];
+            if (collider == null) continue;
+            m_members.TryGetValue(collider.gameObject.GetInstanceID(), out var member);
+            if (member == null) continue;
+            // bombBases.Add(member);
+        }
+
+        return bombBases;
     }
 
     #endregion

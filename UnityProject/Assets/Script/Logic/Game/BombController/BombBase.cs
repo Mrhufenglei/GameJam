@@ -38,6 +38,7 @@ public class BombBase : MonoBehaviour
             efx.transform.position = this.transform.position;
             this.gameObject.SetActive(false);
             ToHit();
+            GameController.Builder.m_mapController.m_bombController.DestroyBomb(this);
         }
     }
 
