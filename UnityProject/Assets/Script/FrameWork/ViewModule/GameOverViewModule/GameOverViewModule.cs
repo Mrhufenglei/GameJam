@@ -51,6 +51,7 @@ public class GameOverViewModule : IViewModule
 
     public void OnClose()
     {
+        if (m_button != null) m_button.onClick.RemoveListener(OnClickButton);
     }
 
     public void RegisterEvents(EventSystemManager manager)

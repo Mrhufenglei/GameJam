@@ -74,6 +74,7 @@ public class UIHPScroll : MonoBehaviour
             var node = m_nodes[i];
             if (node == null) continue;
             node.OnDeInit();
+            GameObject.Destroy(node.gameObject);
         }
 
         m_nodes.Clear();
