@@ -2240,40 +2240,40 @@ MonoBehaviour:
   m_wavaData:
   - m_wavaBombDatas:
     - m_index: 0
-      m_count: 3
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 3
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 4
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 4
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 5
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 5
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 5
-    - m_index: 1
-      m_count: 1
+      m_count: 6
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 6
-    - m_index: 1
-      m_count: 1
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 6
-    - m_index: 1
-      m_count: 1
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 8
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 8
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 10
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 10
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 12
+    - m_index: 1
+      m_count: 1
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 12
+    - m_index: 1
+      m_count: 1
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 15
+    - m_index: 1
+      m_count: 1
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 15
     - m_index: 1
       m_count: 1
   m_wavaIndex: 0
