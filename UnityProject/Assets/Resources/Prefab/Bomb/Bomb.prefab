@@ -128,5 +128,5 @@ MonoBehaviour:
   m_rigidbody: {fileID: 5162146110610590023}
   ExplosionDelay: 6
   m_isGround: 0
-  m_radius: 2
+  m_radius: 2.5
   m_attack: 30
