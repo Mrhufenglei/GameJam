@@ -126,14 +126,14 @@ MonoBehaviour:
   m_endPos: {x: 0, y: 0, z: 0}
   m_flySpeed: 10
   m_radius: 2
-  m_attack: 10
+  m_attack: 15
   m_rigidbody: {fileID: 5162146110610590023}
   m_collider: {fileID: 0}
   m_isGround: 0
   m_state: 0
   m_duration: 6
   m_currentTime: 0
-  m_bombPrefab: {fileID: 7262485776973840055, guid: 882e901ed7483924d966315834f971e8,
+  m_bombPrefab: {fileID: 1865185532811072, guid: ccd0c86f89ec1064dbd79d83f739f41d,
     type: 3}
   m_destroyDuration: 6
   m_currentDestroyTime: 0
