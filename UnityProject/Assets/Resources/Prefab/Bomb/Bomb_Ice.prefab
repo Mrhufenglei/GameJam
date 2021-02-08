@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2ea43fa9d3e0d52438dd66d58785a647, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_state: 0
   m_duration: 6
   m_currentTime: 0
-  m_bombPrefab: {fileID: 1865185532811072, guid: ccd0c86f89ec1064dbd79d83f739f41d,
+  m_bombPrefab: {fileID: 7262485776973840055, guid: 882e901ed7483924d966315834f971e8,
     type: 3}
   m_destroyDuration: 6
   m_currentDestroyTime: 0
