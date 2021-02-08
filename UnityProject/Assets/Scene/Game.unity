@@ -1970,15 +1970,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_prefabs:
   - {fileID: 183738871980724886, guid: 77eac0c36d21d1044bce9c0ad2d4730d, type: 3}
+  - {fileID: 183738871980724886, guid: c246762192123db4da94b6d0c0a69cfb, type: 3}
   m_wavaData:
   - m_wavaBombDatas:
-    - m_index: 0
+    - m_index: 1
       m_count: 1
   - m_wavaBombDatas:
-    - m_index: 0
+    - m_index: 1
       m_count: 2
   - m_wavaBombDatas:
-    - m_index: 0
+    - m_index: 1
       m_count: 3
   m_wavaIndex: 0
   DropInterval: 8

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5162146110610590023}
   - component: {fileID: 8991152499296710969}
   m_Layer: 11
-  m_Name: Bomb
+  m_Name: Bomb_Ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_state: 0
   m_duration: 6
   m_currentTime: 0
-  m_bombPrefab: {fileID: 4958594179920406154, guid: f178f98634e9e0448b0103d7ba3c06c7,
+  m_bombPrefab: {fileID: 1865185532811072, guid: ccd0c86f89ec1064dbd79d83f739f41d,
     type: 3}
   m_destroyDuration: 6
   m_currentDestroyTime: 0

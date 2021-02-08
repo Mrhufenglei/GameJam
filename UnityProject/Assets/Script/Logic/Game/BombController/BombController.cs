@@ -63,6 +63,13 @@ public class BombController : MonoBehaviour, IGameController
 
             mTimer = DropInterval;
         }
+
+        for (int i = 0; i < m_bombs.Count; i++)
+        {
+            var bomb = m_bombs[i];
+            if (bomb == null) continue;
+            bomb.OnUpdate(deltaTime, unscaledDeltaTime);
+        }
     }
 
     public void OnDeInit()
@@ -109,6 +116,7 @@ public class BombController : MonoBehaviour, IGameController
 
                 obj.transform.position = transform.TransformPoint(new Vector3(rndx, DropY, rndz));
                 m_bombs.Add(bombBase);
+                bombBase.OnInit();
                 m_dicBombs[obj.GetInstanceID()] = bombBase;
             }
         }
@@ -117,6 +125,7 @@ public class BombController : MonoBehaviour, IGameController
     public void DestroyBomb(BombBase bombBase)
     {
         if (bombBase == null) return;
+        bombBase.OnDeInit();
         m_bombs.Remove(bombBase);
         m_dicBombs.Remove(bombBase.gameObject.GetInstanceID());
         GameObject.Destroy(bombBase.gameObject);
@@ -128,6 +137,7 @@ public class BombController : MonoBehaviour, IGameController
         {
             var bomb = m_bombs[i];
             if (bomb == null) continue;
+            bomb.OnDeInit();
             GameObject.Destroy(bomb.gameObject);
         }
 

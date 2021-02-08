@@ -7,39 +7,83 @@ public class BombBase : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject ExplosionEfx;
-    public Rigidbody m_rigidbody;
-
-    public float ExplosionDelay = 3f;
-
-    public bool m_isGround = false;
-    private float mTimer = 0;
-
-    public float m_radius = 2;
+    [Header("Attributes")] public float m_radius = 2;
     public float m_attack = 30;
 
-    bool isExplosion = false;
+    [Header("Setting")] public Rigidbody m_rigidbody;
+    [Label] public bool m_isGround = false;
+    public State m_state = State.Wait;
+    [Header("Time")] public float m_duration = 6;
+    public float m_currentTime = 0;
 
-    void Start()
+
+    [Header("Bomb Prefab")] public GameObject m_bombPrefab;
+    [Header("Destroy Time")] public float m_destroyDuration = 6;
+    public float m_currentDestroyTime = 0;
+
+    public enum State
     {
-        mTimer = ExplosionDelay;
-        isExplosion = false;
+        Wait,
+        Bomb,
+    }
+
+    public virtual void OnInit()
+    {
+        m_currentTime = 0;
+        m_currentDestroyTime = 0;
         m_isGround = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OnUpdate(float deltaTime, float unscaledDeltaTime)
     {
-        mTimer -= Time.deltaTime;
-        if (!isExplosion && mTimer <= 0)
+        switch (m_state)
         {
-            isExplosion = true;
-            var efx = GameObject.Instantiate(ExplosionEfx);
-            efx.transform.position = this.transform.position;
-            this.gameObject.SetActive(false);
-            ToHit();
-            GameController.Builder.m_mapController.m_bombController.DestroyBomb(this);
+            case State.Wait:
+            {
+                m_currentTime += deltaTime;
+                if (m_currentTime >= m_duration)
+                {
+                    m_currentTime = 0;
+                    CreateBomb();
+                    m_state = State.Bomb;
+                }
+            }
+                break;
+            case State.Bomb:
+            {
+                m_currentDestroyTime += deltaTime;
+                OnBombUpdate(deltaTime,unscaledDeltaTime);
+                if (m_currentDestroyTime >= m_destroyDuration)
+                {
+                    GameController.Builder.m_mapController.m_bombController.DestroyBomb(this);
+                    m_currentDestroyTime = 0;
+                }
+            }
+                break;
         }
+    }
+
+    private void CreateBomb()
+    {
+        var efx = GameObject.Instantiate(m_bombPrefab);
+        efx.transform.position = this.transform.position;
+        this.gameObject.SetActive(false);
+        OnBombInit(efx);
+        ToHit();
+    }
+
+    protected virtual void OnBombUpdate(float deltaTime, float unscaledDeltaTime)
+    {
+        
+    }
+
+    protected virtual void OnBombInit(GameObject obj)
+    {
+    }
+
+
+    public virtual void OnDeInit()
+    {
     }
 
     private void OnCollisionEnter(Collision other)
