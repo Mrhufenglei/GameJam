@@ -1968,8 +1968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd45c5f88923f8c4584292afdd3e5de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BombPrefab: {fileID: 183738871980724886, guid: 77eac0c36d21d1044bce9c0ad2d4730d,
-    type: 3}
   m_prefabs:
   - {fileID: 183738871980724886, guid: 77eac0c36d21d1044bce9c0ad2d4730d, type: 3}
   m_wavaData:
@@ -1984,7 +1982,6 @@ MonoBehaviour:
       m_count: 3
   m_wavaIndex: 0
   DropInterval: 8
-  DropCount: 4
   DropY: 10
   RandomRangeX: 2.5
   RandomRangeZ: 2.5
@@ -2199,8 +2196,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1947648563}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.4
-  m_Speed: 3.5
+  m_Radius: 0.3
+  m_Speed: 7
   m_Acceleration: 200
   avoidancePriority: 50
   m_AngularSpeed: 720

@@ -16,6 +16,9 @@ public class MemberEnemy : BaseMember
 {
     public BombBase m_targetBomb;
 
+    private bool m_isWait = false;
+    private float m_time = 0;
+
     public override void OnControllerColliderHit(ControllerColliderHit collider)
     {
         base.OnControllerColliderHit(collider);
@@ -43,6 +46,7 @@ public class MemberEnemy : BaseMember
                 dir = dir.normalized * force;
                 rigidbody.AddForce(dir, ForceMode.Impulse);
             }
+
             if (m_targetBomb != null && m_targetBomb.gameObject == collider.gameObject)
             {
                 m_isWait = true;
@@ -72,9 +76,6 @@ public class MemberEnemy : BaseMember
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
-
-    private bool m_isWait = false;
-    private float m_time = 0;
 
     protected override void OnUpdateState(float deltaTime, float unscaledDeltaTime, MemberState state)
     {
@@ -106,7 +107,7 @@ public class MemberEnemy : BaseMember
                 if (m_isWait)
                 {
                     m_time += deltaTime;
-                    if (m_time >= 0.5f)
+                    if (m_time >= 1f)
                     {
                         SwtichState(MemberState.Idle);
                         m_isWait = false;
@@ -120,7 +121,8 @@ public class MemberEnemy : BaseMember
                         {
                             SetAgentDestination(m_targetBomb.transform.position);
                         }
-                        if (Vector3.Distance(m_targetBomb.transform.position, transform.transform.position) <= 1f)
+
+                        if (Vector3.Distance(m_targetBomb.transform.position, transform.transform.position) <= 0.8f)
                         {
                             m_isWait = true;
                             StopAgent();
