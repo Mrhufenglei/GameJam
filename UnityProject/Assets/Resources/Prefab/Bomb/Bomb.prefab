@@ -123,9 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0acf5224543c18498af6f05fd077a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_endPos: {x: 0, y: 0, z: 0}
+  m_flySpeed: 10
   m_radius: 1.5
   m_attack: 30
   m_rigidbody: {fileID: 5162146110610590023}
+  m_collider: {fileID: 0}
   m_isGround: 0
   m_state: 0
   m_duration: 6

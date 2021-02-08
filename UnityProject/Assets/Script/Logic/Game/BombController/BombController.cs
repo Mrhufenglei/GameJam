@@ -114,8 +114,14 @@ public class BombController : MonoBehaviour, IGameController
                 var bombBase = obj.GetComponent<BombBase>();
                 if (bombBase == null) return;
 
-                obj.transform.position = transform.TransformPoint(new Vector3(rndx, DropY, rndz));
+                float startX = Random.Range(0, 2) == 0 ? -10f : 10f;
+
+                Vector3 startPos = transform.TransformPoint(new Vector3(startX, DropY, rndz + startX));
+                Vector3 endPos = transform.TransformPoint(new Vector3(rndx, 0, rndz));
+
+                obj.transform.position = startPos;
                 m_bombs.Add(bombBase);
+                bombBase.SetEndPos(endPos);
                 bombBase.OnInit();
                 m_dicBombs[obj.GetInstanceID()] = bombBase;
             }
