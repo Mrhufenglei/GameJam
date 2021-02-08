@@ -15,7 +15,8 @@ public class GameOverViewModule : IViewModule
     private GameObject m_gameObject;
     public Button m_button;
 
-    public Text m_text;
+    public GameObject m_winObj;
+    public GameObject m_failureObj;
 
     #region IViewModule
 
@@ -37,12 +38,16 @@ public class GameOverViewModule : IViewModule
             Debug.LogErrorFormat("GameOverViewModule.Open(GameOverType)  is null ");
             return;
         }
+
         GameOverType type = (GameOverType) data;
         var dic = ViewTools.CollectAllGameObjects(m_gameObject);
         m_button = dic["GameOverButton"].GetComponent<Button>();
         if (m_button != null) m_button.onClick.AddListener(OnClickButton);
-        m_text = dic["Title"].GetComponent<Text>();
-        if (m_text != null) m_text.text = type == GameOverType.Win ? "Win" : "Failure";
+        
+        m_winObj = dic["win"];
+        m_failureObj = dic["lose"];
+        if (m_winObj != null) m_winObj.SetActive(type == GameOverType.Win);
+        if (m_failureObj != null) m_failureObj.SetActive(type == GameOverType.Failure);
     }
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
