@@ -12,16 +12,20 @@ using UnityEngine;
 /// </summary>
 public class MapController : MonoBehaviour, IGameController
 {
-    public BaseMember m_player;
+    [Header("Map Setting")] public BaseMap m_map;
+
+    [Header("Member Setting")] public BaseMember m_player;
     public List<BaseMember> m_enemys = new List<BaseMember>(10);
     public Dictionary<int, BaseMember> m_members = new Dictionary<int, BaseMember>();
 
-    public BombController m_bombController;
+    [Header("Bomb Setting")] public BombController m_bombController;
 
     #region IGameController
 
     public void OnInit()
     {
+        if (m_map != null) m_map.OnInit();
+
         if (m_player != null)
         {
             m_members.Add(m_player.gameObject.GetInstanceID(), m_player);
@@ -43,6 +47,7 @@ public class MapController : MonoBehaviour, IGameController
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
     {
+        if (m_map != null) m_map.OnUpdate(deltaTime, unscaledDeltaTime);
         if (m_player != null) m_player.OnUpdate(deltaTime, unscaledDeltaTime);
         for (int i = 0; i < m_enemys.Count; i++)
         {
@@ -55,6 +60,7 @@ public class MapController : MonoBehaviour, IGameController
 
     public void OnDeInit()
     {
+        if (m_map != null) m_map.OnDeInit();
         if (m_player != null) m_player.OnDeInit();
         for (int i = 0; i < m_enemys.Count; i++)
         {
@@ -69,6 +75,7 @@ public class MapController : MonoBehaviour, IGameController
 
     public void OnReset()
     {
+        if (m_map != null) m_map.OnReset();
         if (m_player != null) m_player.OnReset();
         for (int i = 0; i < m_enemys.Count; i++)
         {
@@ -81,6 +88,7 @@ public class MapController : MonoBehaviour, IGameController
 
     public void OnGameStart()
     {
+        if (m_map != null) m_map.OnGameStart();
         if (m_player != null) m_player.OnGameStart();
         for (int i = 0; i < m_enemys.Count; i++)
         {
@@ -93,6 +101,7 @@ public class MapController : MonoBehaviour, IGameController
 
     public void OnPause(bool pause)
     {
+        if (m_map != null) m_map.OnPause(pause);
         if (m_player != null) m_player.OnPause(pause);
         for (int i = 0; i < m_enemys.Count; i++)
         {
@@ -105,6 +114,7 @@ public class MapController : MonoBehaviour, IGameController
 
     public void OnGameOver(GameOverType gameOverType)
     {
+        if (m_map != null) m_map.OnGameOver(gameOverType);
         if (m_player != null) m_player.OnGameOver(gameOverType);
         for (int i = 0; i < m_enemys.Count; i++)
         {
