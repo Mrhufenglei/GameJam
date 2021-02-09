@@ -301,8 +301,8 @@ MonoBehaviour:
   m_memberData:
     m_gravityValue: -9.81
     m_hpMax: 200
-    m_speedX: 10
-    m_speedY: 10
+    m_speedX: 6
+    m_speedY: 6
   m_character: {fileID: 108286347}
   m_playerVelocity: {x: 0, y: 0, z: 0}
   m_agent: {fileID: 108286348}
@@ -1231,7 +1231,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 6
   m_Acceleration: 200
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -2490,24 +2490,24 @@ MonoBehaviour:
       m_count: 1
   - m_wavaBombDatas:
     - m_index: 0
-      m_count: 6
+      m_count: 4
     - m_index: 1
       m_count: 1
   - m_wavaBombDatas:
     - m_index: 0
-      m_count: 8
+      m_count: 5
     - m_index: 1
       m_count: 2
   - m_wavaBombDatas:
     - m_index: 0
-      m_count: 10
+      m_count: 6
     - m_index: 1
       m_count: 3
   - m_wavaBombDatas:
     - m_index: 0
-      m_count: 12
+      m_count: 8
     - m_index: 1
-      m_count: 4
+      m_count: 3
   m_wavaIndex: 0
   DropInterval: 8
   DropY: 10
@@ -2728,7 +2728,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 6
   m_Acceleration: 200
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -2985,7 +2985,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 6
   m_Acceleration: 200
   avoidancePriority: 50
   m_AngularSpeed: 720
