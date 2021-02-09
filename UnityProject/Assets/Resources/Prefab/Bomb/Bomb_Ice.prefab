@@ -79,7 +79,7 @@ MonoBehaviour:
   m_animator: {fileID: 764322588250736603}
   m_endPos: {x: 0, y: 0, z: 0}
   m_flySpeed: 10
-  m_radius: 2
+  m_radius: 1.5
   m_attack: 15
   m_rigidbody: {fileID: 5162146110610590023}
   m_collider: {fileID: 0}
