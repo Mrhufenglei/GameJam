@@ -205,7 +205,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 100
+    m_hpMax: 200
     m_speedX: 5
     m_speedY: 5
   m_character: {fileID: 108286347}
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 100
+    m_hpMax: 500
     m_speedX: 10
     m_speedY: 10
   m_character: {fileID: 975864196}
@@ -2339,42 +2339,54 @@ MonoBehaviour:
   m_wavaData:
   - m_wavaBombDatas:
     - m_index: 0
-      m_count: 10
+      m_count: 4
+    - m_index: 1
+      m_count: 1
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 6
+    - m_index: 1
+      m_count: 1
+  - m_wavaBombDatas:
+    - m_index: 0
+      m_count: 8
+    - m_index: 1
+      m_count: 2
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 10
+    - m_index: 1
+      m_count: 3
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 12
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 12
-  - m_wavaBombDatas:
-    - m_index: 0
-      m_count: 14
+    - m_index: 1
+      m_count: 4
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 14
+    - m_index: 1
+      m_count: 4
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 16
     - m_index: 1
-      m_count: 1
+      m_count: 5
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 16
     - m_index: 1
-      m_count: 1
+      m_count: 5
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 20
     - m_index: 1
-      m_count: 1
+      m_count: 6
   - m_wavaBombDatas:
     - m_index: 0
       m_count: 20
     - m_index: 1
-      m_count: 1
+      m_count: 8
   m_wavaIndex: 0
   DropInterval: 8
   DropY: 10
@@ -2555,7 +2567,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 100
+    m_hpMax: 500
     m_speedX: 10
     m_speedY: 10
   m_character: {fileID: 1947648566}
@@ -2830,7 +2842,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 100
+    m_hpMax: 500
     m_speedX: 10
     m_speedY: 10
   m_character: {fileID: 2129433812}
