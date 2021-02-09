@@ -1238,7 +1238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: "\u8FD4\u56DE\u4E3B\u9875"
+  m_Text: Home
 --- !u!222 &561935197
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1500,7 +1500,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8FDB\u5165\u5173\u5361"
+  m_Text: Go
 --- !u!222 &617649021
 CanvasRenderer:
   m_ObjectHideFlags: 0

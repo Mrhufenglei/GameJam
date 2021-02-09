@@ -54,7 +54,7 @@ public class UIHPNode : MonoBehaviour
         if (GameApp.UI.UICamera == null) return;
         var point =
             GameController.Builder.m_cameraController.m_camera.WorldToScreenPoint(
-                m_target.gameObject.transform.TransformPoint(new Vector3(0, 0, 0.5f)));
+                m_target.gameObject.transform.TransformPoint(new Vector3(0, 0, 0)));
         Vector3 pos = GameApp.UI.UICamera.ScreenToWorldPoint(point);
         m_rectTransform.position = pos;
         m_rectTransform.anchoredPosition = new Vector3(m_rectTransform.anchoredPosition.x, m_rectTransform.anchoredPosition.y, 0);
