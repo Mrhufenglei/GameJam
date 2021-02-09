@@ -300,7 +300,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 200
+    m_hpMax: 150
     m_speedX: 6
     m_speedY: 6
   m_character: {fileID: 108286347}
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 500
+    m_hpMax: 250
     m_speedX: 10
     m_speedY: 10
   m_character: {fileID: 975864196}
@@ -2689,7 +2689,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 500
+    m_hpMax: 250
     m_speedX: 10
     m_speedY: 10
   m_character: {fileID: 1947648566}
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_memberState: 0
   m_memberData:
     m_gravityValue: -9.81
-    m_hpMax: 500
+    m_hpMax: 250
     m_speedX: 10
     m_speedY: 10
   m_character: {fileID: 2129433812}
