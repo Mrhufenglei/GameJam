@@ -5,6 +5,7 @@
 //----------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -22,6 +23,7 @@ public class UIHPScroll : MonoBehaviour
     public void OnOpen(object data)
     {
         GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_CREATEHP, OnEventCreateHP);
+        GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_DESTROYHP, OnEventDestroyHP);
     }
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
@@ -32,6 +34,7 @@ public class UIHPScroll : MonoBehaviour
     public void OnClose()
     {
         GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_CREATEHP, OnEventCreateHP);
+        GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_DESTROYHP, OnEventDestroyHP);
         DestroyAllNodes();
     }
 
@@ -88,6 +91,25 @@ public class UIHPScroll : MonoBehaviour
         if (eventObject == null) return;
         var member = eventObject as BaseMember;
         CreateNode(member);
+    }
+
+    private void OnEventDestroyHP(int evenid, object eventObject)
+    {
+        if (eventObject == null) return;
+        var member = eventObject as BaseMember;
+
+       var nodes = m_nodes.ToList();
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            var node = nodes[i];
+            if (node == null) continue;
+            if (node.m_target == member)
+            {
+                node.OnDeInit();
+                GameObject.Destroy(node.gameObject);
+                m_nodes.Remove(node);
+            }
+        }
     }
 
     #endregion

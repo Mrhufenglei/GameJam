@@ -25,7 +25,7 @@ public class MemberEnemy : BaseMember
         {
             Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
         }
-        
+
         if (collider.gameObject.layer == 9)
         {
             Debug.LogFormat("碰到玩家了 {0}", collider.gameObject.name);
@@ -70,6 +70,13 @@ public class MemberEnemy : BaseMember
                 m_isWait = false;
                 break;
             case MemberState.Death:
+                //关闭显示
+                gameObject.SetActive(false);
+                //创建一个特效
+                GameObject prefab = GameApp.Resources.Load<GameObject>("Prefab/Effect/Effect_Death");
+                var obj = GameObject.Instantiate<GameObject>(prefab);
+                obj.gameObject.transform.position = transform.position;
+                GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_DESTROYHP, this);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
