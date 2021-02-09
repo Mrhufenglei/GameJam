@@ -7,9 +7,10 @@ public class BombBase : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public Animator m_animator;
     [Label] public Vector3 m_endPos = Vector3.zero;
     [Header("Fly Setting")] public float m_flySpeed = 10;
-    
+
     [Header("Attributes")] public float m_radius = 2;
     public float m_attack = 30;
 
@@ -38,7 +39,7 @@ public class BombBase : MonoBehaviour
         m_currentTime = 0;
         m_currentDestroyTime = 0;
         m_isGround = false;
-        if(m_rigidbody!=null)m_rigidbody.isKinematic = true;
+        if (m_rigidbody != null) m_rigidbody.isKinematic = true;
         if (m_collider != null) m_collider.enabled = false;
     }
 
@@ -55,7 +56,7 @@ public class BombBase : MonoBehaviour
                 var d1 = Vector3.Distance(transform.position, m_endPos);
                 if (d1 <= 0.5f)
                 {
-                    if(m_rigidbody!=null)m_rigidbody.isKinematic = false;
+                    if (m_rigidbody != null) m_rigidbody.isKinematic = false;
                     if (m_collider != null) m_collider.enabled = true;
                     m_state = State.Wait;
                 }
@@ -97,6 +98,9 @@ public class BombBase : MonoBehaviour
         efx.transform.position = this.transform.position;
         this.gameObject.SetActive(false);
         OnBombInit(efx);
+        
+        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_BombHit,this);
+        
         ToHit();
     }
 
@@ -122,6 +126,7 @@ public class BombBase : MonoBehaviour
             m_rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
             m_rigidbody.Sleep();
             m_state = State.Wait;
+            if (m_animator != null) m_animator.SetTrigger("Bomb");
             m_isGround = true;
         }
     }

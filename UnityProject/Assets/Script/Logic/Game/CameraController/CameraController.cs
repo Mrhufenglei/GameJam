@@ -12,11 +12,14 @@ using UnityEngine;
 public class CameraController : MonoBehaviour,IGameController
 {
     public Camera m_camera;
+    public Animator m_animator;
     
     #region IGameController
 
     public void OnInit()
     {
+        if(m_animator!=null)m_animator.SetTrigger("Idle");
+        GameApp.Event.RegisterEvent(LocalMessageName.CC_GAME_BombHit,OnEventBombHit);
     }
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
@@ -25,6 +28,8 @@ public class CameraController : MonoBehaviour,IGameController
 
     public void OnDeInit()
     {
+        GameApp.Event.UnRegisterEvent(LocalMessageName.CC_GAME_BombHit,OnEventBombHit);
+
     }
 
     public void OnReset()
@@ -41,6 +46,15 @@ public class CameraController : MonoBehaviour,IGameController
 
     public void OnGameOver(GameOverType gameOverType)
     {
+    }
+
+    #endregion
+
+    #region Event
+
+    private void OnEventBombHit(int type, object obj)
+    {
+        if(m_animator!=null)m_animator.SetTrigger("Shake");
     }
 
     #endregion
