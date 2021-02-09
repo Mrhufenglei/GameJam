@@ -24,7 +24,7 @@ public abstract class BaseMember : MonoBehaviour, IGameController
     [SerializeField] [Label] protected Vector3 m_playerVelocity;
 
     [Header("Nav Agent")] public NavMeshAgent m_agent;
-    [SerializeField] [Label] private Vector3 m_destination;
+    [SerializeField] [Label] protected Vector3 m_destination;
 
     [Header("Attributes")] [SerializeField] [Label]
     private float m_hp = 0;
@@ -102,14 +102,6 @@ public abstract class BaseMember : MonoBehaviour, IGameController
     private void ResetAttributes()
     {
         m_hp = m_memberData.m_hpMax;
-    }
-
-    public virtual void OnControllerColliderHit(ControllerColliderHit collider)
-    {
-        if (collider.gameObject.layer == 8)
-        {
-            Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
-        }
     }
 
     public void SwtichState(MemberState state)

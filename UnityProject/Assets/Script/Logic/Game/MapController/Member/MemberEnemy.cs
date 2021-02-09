@@ -16,13 +16,16 @@ public class MemberEnemy : BaseMember
 {
     public BombBase m_targetBomb;
 
-    private bool m_isWait = false;
-    private float m_time = 0;
+    [SerializeField] [Label] private bool m_isWait = false;
+    [SerializeField] [Label] private float m_time = 0;
 
-    public override void OnControllerColliderHit(ControllerColliderHit collider)
+    public void OnCollisionEnter(Collision collider)
     {
-        base.OnControllerColliderHit(collider);
-
+        if (collider.gameObject.layer == 8)
+        {
+            Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
+        }
+        
         if (collider.gameObject.layer == 9)
         {
             Debug.LogFormat("碰到玩家了 {0}", collider.gameObject.name);
@@ -41,16 +44,12 @@ public class MemberEnemy : BaseMember
             Rigidbody rigidbody = collider.gameObject.GetComponent<Rigidbody>();
             if (rigidbody != null)
             {
-                Vector3 dir = collider.transform.position - transform.position;
-                float force = 10f;
+                Vector3 dir = new Vector3(collider.transform.position.x, 0, collider.transform.position.z) -
+                              new Vector3(transform.position.x, 0, transform.position.z);
+                float force = 10;
                 dir = dir.normalized * force;
                 rigidbody.AddForce(dir, ForceMode.Impulse);
-            }
-
-            if (m_targetBomb != null && m_targetBomb.gameObject == collider.gameObject)
-            {
-                m_isWait = true;
-                StopAgent();
+                // rigidbody.AddExplosionForce(100,transform.position,2,3.0f);
             }
 
             return;
@@ -96,7 +95,11 @@ public class MemberEnemy : BaseMember
                     if (m_targetBomb != null)
                     {
                         PlayAgent();
-                        SetAgentDestination(m_targetBomb.transform.position);
+                        Vector3 dir = m_targetBomb.transform.position - transform.position;
+                        dir = new Vector3(dir.x, 0, dir.z);
+                        dir = dir.normalized * 1;
+                        Vector3 pos = new Vector3(m_targetBomb.transform.position.x, 0, m_targetBomb.transform.position.z);
+                        SetAgentDestination(pos + dir);
                         SwtichState(MemberState.Run);
                     }
                 }
@@ -107,7 +110,7 @@ public class MemberEnemy : BaseMember
                 if (m_isWait)
                 {
                     m_time += deltaTime;
-                    if (m_time >= 1f)
+                    if (m_time >= 1.5f)
                     {
                         SwtichState(MemberState.Idle);
                         m_isWait = false;
@@ -117,12 +120,20 @@ public class MemberEnemy : BaseMember
                 {
                     if (m_targetBomb != null)
                     {
-                        if (Vector3.Distance(m_targetBomb.transform.position, GetAgentDestination()) >= 0.5f)
+                        // if (Vector3.Distance(m_targetBomb.transform.position, GetAgentDestination()) >= 0.5f)
+                        // {
+                        //     SetAgentDestination(m_targetBomb.transform.position);
+                        // }
+                        m_time += deltaTime;
+                        if (m_time >= 1)
                         {
-                            SetAgentDestination(m_targetBomb.transform.position);
+                            SwtichState(MemberState.Idle);
+                            m_isWait = false;
+                            return;
                         }
 
-                        if (Vector3.Distance(m_targetBomb.transform.position, transform.transform.position) <= 0.8f)
+                        Vector3 trans = new Vector3(transform.transform.position.x, 0, transform.transform.position.z);
+                        if (Vector3.Distance(GetAgentDestination(), trans) <= 0.5f)
                         {
                             m_isWait = true;
                             StopAgent();

@@ -364,7 +364,7 @@ Transform:
   - {fileID: 1303743760}
   - {fileID: 1144674956}
   m_Father: {fileID: 1217053189}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421222403
 GameObject:
@@ -748,7 +748,7 @@ Transform:
   m_Children:
   - {fileID: 175437143}
   m_Father: {fileID: 1217053189}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664580866
 GameObject:
@@ -1073,6 +1073,8 @@ MonoBehaviour:
   m_destination: {x: 0, y: 0, z: 0}
   m_hp: 0
   m_targetBomb: {fileID: 0}
+  m_isWait: 0
+  m_time: 0
 --- !u!195 &975864195
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1082,7 +1084,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 975864192}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.5
   m_Speed: 7
   m_Acceleration: 200
   avoidancePriority: 50
@@ -1304,10 +1306,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 600009178}
-  - {fileID: 4694411585414410787}
   - {fileID: 239811395}
   - {fileID: 652311221}
   - {fileID: 1411354374}
+  - {fileID: 4694411585414410787}
   - {fileID: 1838313509}
   m_Father: {fileID: 1374186919}
   m_RootOrder: 2
@@ -2072,7 +2074,7 @@ Transform:
   - {fileID: 421222404}
   - {fileID: 2053317520}
   m_Father: {fileID: 1217053189}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1558628164
 GameObject:
@@ -2563,6 +2565,8 @@ MonoBehaviour:
   m_destination: {x: 0, y: 0, z: 0}
   m_hp: 0
   m_targetBomb: {fileID: 0}
+  m_isWait: 0
+  m_time: 0
 --- !u!143 &1947648566
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2590,7 +2594,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1947648563}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.5
   m_Speed: 7
   m_Acceleration: 200
   avoidancePriority: 50
@@ -2902,6 +2906,8 @@ MonoBehaviour:
   m_destination: {x: 0, y: 0, z: 0}
   m_hp: 0
   m_targetBomb: {fileID: 0}
+  m_isWait: 0
+  m_time: 0
 --- !u!195 &2129433811
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2911,7 +2917,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2129433808}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.5
   m_Speed: 7
   m_Acceleration: 200
   avoidancePriority: 50
@@ -3102,8 +3108,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c829623893ce490488cab684f48cd40a, type: 3}
 --- !u!4 &4694411585414410787 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 41744166193578188, guid: c829623893ce490488cab684f48cd40a,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 4694411585414410786}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4694411585414410788 stripped

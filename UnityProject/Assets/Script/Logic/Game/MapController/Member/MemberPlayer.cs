@@ -12,10 +12,13 @@ using UnityEngine;
 /// </summary>
 public class MemberPlayer : BaseMember
 {
-    public override void OnControllerColliderHit(ControllerColliderHit collider)
+    public void  OnControllerColliderHit(ControllerColliderHit collider)
     {
-        base.OnControllerColliderHit(collider);
-
+        if (collider.gameObject.layer == 8)
+        {
+            Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
+        }
+        
         if (collider.gameObject.layer == 10)
         {
             Debug.LogFormat("碰到人怪物了 {0}", collider.gameObject.name);
