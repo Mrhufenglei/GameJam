@@ -13,7 +13,9 @@ using UnityEngine;
 /// </summary>
 public class UIHPScroll : MonoBehaviour
 {
-    public GameObject m_prefab;
+    public GameObject m_playerPrefab;
+    public GameObject m_enemyPrefab;
+
     public RectTransform m_parent;
 
     public List<UIHPNode> m_nodes = new List<UIHPNode>();
@@ -45,9 +47,10 @@ public class UIHPScroll : MonoBehaviour
     private void CreateNode(BaseMember member)
     {
         if (member == null) return;
-        if (m_prefab == null) return;
+        var prefab = member.m_memberType == MemberType.Player ? m_playerPrefab : m_enemyPrefab;
+        if (prefab == null) return;
         if (m_parent == null) return;
-        var obj = GameObject.Instantiate<GameObject>(m_prefab);
+        var obj = GameObject.Instantiate<GameObject>(prefab);
         if (obj == null) return;
         obj.transform.SetParent(m_parent);
         obj.transform.localScale = Vector3.one;
