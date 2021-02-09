@@ -44,6 +44,11 @@ public enum LocalMessageName
     /// 玩家受伤
     /// </summary>
     CC_GAME_PlayerHit,
+    
+    /// <summary>
+    /// 炸弹爆炸  —BombBase
+    /// </summary>
+    CC_GAME_BombHit,
 
 }
 

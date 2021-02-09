@@ -98,6 +98,9 @@ public class BombBase : MonoBehaviour
         efx.transform.position = this.transform.position;
         this.gameObject.SetActive(false);
         OnBombInit(efx);
+        
+        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_BombHit,this);
+        
         ToHit();
     }
 
