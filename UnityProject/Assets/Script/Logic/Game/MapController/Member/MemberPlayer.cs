@@ -101,6 +101,9 @@ public class MemberPlayer : BaseMember
     public override void OnHit(float attack)
     {
         base.OnHit(attack);
+        //手机震动
+        Handheld.Vibrate(); 
+        //通知受伤
         GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_PlayerHit);
     }
 }
