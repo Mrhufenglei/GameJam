@@ -121,6 +121,7 @@ public class BombBase : MonoBehaviour
         {
             m_rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
             m_rigidbody.Sleep();
+            m_state = State.Wait;
             m_isGround = true;
         }
     }
