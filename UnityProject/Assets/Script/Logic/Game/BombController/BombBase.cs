@@ -21,6 +21,8 @@ public class BombBase : MonoBehaviour
     public State m_state = State.Fly;
     [Header("Time")] public float m_duration = 6;
     public float m_currentTime = 0;
+    [Header("Attack Distance")] public GameObject m_attackDistanceObj = null;
+    public float m_attackDistanceDuration = 3;
 
 
     [Header("Bomb Prefab")] public GameObject m_bombPrefab;
@@ -65,10 +67,29 @@ public class BombBase : MonoBehaviour
             case State.Wait:
             {
                 m_currentTime += deltaTime;
+
+                //攻击距离显示
+                if (m_currentTime >= m_attackDistanceDuration)
+                {
+                    if (m_attackDistanceObj == null)
+                    {
+                        var prefab = GameApp.Resources.Load<GameObject>("Prefab/Effect/Effect_BombDistance");
+                        m_attackDistanceObj = GameObject.Instantiate<GameObject>(prefab);
+                        m_attackDistanceObj.transform.localScale = Vector3.one * m_radius*2;
+                        m_attackDistanceObj.transform.position = transform.position;
+                    }
+                }
+
+                if (m_attackDistanceObj != null)
+                {
+                    m_attackDistanceObj.transform.position = transform.position;
+                }
+
                 if (m_currentTime >= m_duration)
                 {
                     m_currentTime = 0;
                     CreateBomb();
+                    if (m_attackDistanceObj != null) GameObject.Destroy(m_attackDistanceObj);
                     m_state = State.Bomb;
                 }
             }
@@ -98,9 +119,9 @@ public class BombBase : MonoBehaviour
         efx.transform.position = this.transform.position;
         this.gameObject.SetActive(false);
         OnBombInit(efx);
-        
-        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_BombHit,this);
-        
+
+        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_BombHit, this);
+
         ToHit();
     }
 
