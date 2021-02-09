@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -18,6 +19,8 @@ public class GameViewModule : IViewModule
 
     public ScrollCircle m_joy;
 
+
+    public UIHitMask m_hitMask;
     #region IViewModule
 
     public int GetName()
@@ -37,6 +40,9 @@ public class GameViewModule : IViewModule
         m_scroll = dic["HpScroll"].GetComponent<UIHPScroll>();
         if (m_scroll != null) m_scroll.OnOpen(data);
 
+        m_hitMask = dic["HitMask"].GetComponent<UIHitMask>();
+        if(m_hitMask!=null)m_hitMask.OnOpen(data);
+        
         m_joy = dic["MoveJoy"].GetComponentInChildren<ScrollCircle>();
         if(m_joy!= null)
         {
@@ -44,16 +50,20 @@ public class GameViewModule : IViewModule
             ScrollCircle.On_JoyTouching += OnMoving;
             ScrollCircle.On_JoyTouchEnd += OnMoveEnd;
         }
+
     }
 
     public void OnUpdate(float deltaTime, float unscaledDeltaTime)
     {
         if (m_scroll != null) m_scroll.OnUpdate(deltaTime, unscaledDeltaTime);
+        if(m_hitMask!=null)m_hitMask.OnUpdate(deltaTime, unscaledDeltaTime);
+
     }
 
     public void OnClose()
     {
         if (m_scroll != null) m_scroll.OnClose();
+        if(m_hitMask!=null)m_hitMask.OnClose();
 
         if(m_joy!= null)
         {

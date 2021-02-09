@@ -136,7 +136,7 @@ public class BombBase : MonoBehaviour
             {
                 var member = members[i];
                 if (member == null) continue;
-                member.OnHit(m_attack);
+                member.ToHit(m_attack);
             }
         }
     }

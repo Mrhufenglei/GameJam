@@ -36,6 +36,11 @@ public enum LocalMessageName
     /// 检查是否游戏结束
     /// </summary>
     CC_GAME_CHECKISOVERFORMEMBERS,
+    /// <summary>
+    /// 玩家受伤
+    /// </summary>
+    CC_GAME_PlayerHit,
+
 }
 
 

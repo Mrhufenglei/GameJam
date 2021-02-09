@@ -84,9 +84,10 @@ public abstract class BaseMember : MonoBehaviour, IGameController
 
     #region OnHit
 
-    public void OnHit(float attack)
+    public void ToHit(float attack)
     {
         m_hp -= attack;
+        OnHit(attack);
         if (m_hp <= 0)
         {
             m_hp = 0;
@@ -95,6 +96,11 @@ public abstract class BaseMember : MonoBehaviour, IGameController
             //检查是否结束
             GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_CHECKISOVERFORMEMBERS, null);
         }
+    }
+
+    public virtual void OnHit(float attack)
+    {
+        
     }
 
     #endregion

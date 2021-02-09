@@ -91,4 +91,10 @@ public class MemberPlayer : BaseMember
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
+
+    public override void OnHit(float attack)
+    {
+        base.OnHit(attack);
+        GameApp.Event.DispatchNow(LocalMessageName.CC_GAME_PlayerHit);
+    }
 }
