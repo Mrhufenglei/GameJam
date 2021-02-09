@@ -12,13 +12,13 @@ using UnityEngine;
 /// </summary>
 public class MemberPlayer : BaseMember
 {
-    public void  OnControllerColliderHit(ControllerColliderHit collider)
+    public void OnControllerColliderHit(ControllerColliderHit collider)
     {
         if (collider.gameObject.layer == 8)
         {
             Debug.LogFormat("碰到墙了 {0}", collider.gameObject.name);
         }
-        
+
         if (collider.gameObject.layer == 10)
         {
             Debug.LogFormat("碰到人怪物了 {0}", collider.gameObject.name);
@@ -61,6 +61,12 @@ public class MemberPlayer : BaseMember
             case MemberState.Run:
                 break;
             case MemberState.Death:
+                //关闭显示
+                gameObject.SetActive(false);
+                //创建一个特效
+                GameObject obj = GameApp.Resources.Load<GameObject>("Prefab/Effect/Effect_Death");
+                obj.gameObject.transform.position = transform.position;
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
