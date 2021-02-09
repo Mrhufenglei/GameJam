@@ -117,7 +117,7 @@ public class MemberEnemy : BaseMember
                 if (m_isWait)
                 {
                     m_time += deltaTime;
-                    if (m_time >= 1.5f)
+                    if (m_time >= 0.5f)
                     {
                         SwtichState(MemberState.Idle);
                         m_isWait = false;
